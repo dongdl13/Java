@@ -1,12 +1,19 @@
 package cn.test;
 
+import cn.model.Demo;
+
 import java.util.Calendar;
 import java.util.Date;
 
 public class StringTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 
+		//System.out.println(Demo.class.getSimpleName());
+		compareString();
+	}
+
+	public static void other(){
 		String str = "1524547606000";
 		String str0 = str.substring(2);
 
@@ -31,5 +38,10 @@ public class StringTest {
 		System.out.println(outS0515_1);
 		String outS0515_2 = String.valueOf(s0515);
 		System.out.println(outS0515_2.equals(null));
+	}
+
+	public static void compareString(){
+		boolean b = ("1528" != "1528");
+		System.out.println(b);
 	}
 }

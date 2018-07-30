@@ -21,6 +21,7 @@ public class MD5Util {
 	
 	private static final String hexDigits[] = { "0", "1", "2", "3", "4", "5",
 		"6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
+	private static final String hexDigitsStr = "0123456789abcdef";
 	private static String byteArrayToHexString(byte b[]) {
 		StringBuffer resultSb = new StringBuffer();
 		for (int i = 0; i < b.length; i++)
@@ -35,7 +36,8 @@ public class MD5Util {
 			n += 256;
 		int d1 = n / 16;
 		int d2 = n % 16;
-		return hexDigits[d1] + hexDigits[d2];
+		//return hexDigits[d1] + hexDigits[d2];
+		return hexDigitsStr.toCharArray()[d1] + "" + hexDigitsStr.toCharArray()[d2];
 	}
 
 	public static String MD5Encode(String origin, String charsetname) {
@@ -88,12 +90,6 @@ public class MD5Util {
         return result;
     }
 
-	public static void main(String[] args) {
-		String str = "6d3121b650e42855976d0f70dd2048e4/openinterface/getPaymentInfocardID545452name都是xmid5591482307783 6d3121b650e42855976d0f70dd2048e4";
-		System.out.println(MD5Encode(str,"gbk"));
-	}
-	
-
 	public static String getMD5(byte[] source) throws NoSuchAlgorithmException {
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 				'a', 'b', 'c', 'd', 'e', 'f' };
@@ -109,6 +105,7 @@ public class MD5Util {
 		}
 		return new String(dest);
 	}
+
 	
 	
 
