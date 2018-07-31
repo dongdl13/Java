@@ -9,8 +9,9 @@ public class StringTest {
 
 	public static void main(String[] args){
 
-		//System.out.println(Demo.class.getSimpleName());
-		compareString();
+//		System.out.println(Demo.class.getSimpleName());
+//		compareString();
+		verify();
 	}
 
 	public static void other(){
@@ -43,5 +44,15 @@ public class StringTest {
 	public static void compareString(){
 		boolean b = ("1528" != "1528");
 		System.out.println(b);
+	}
+
+	/**
+	 * 字符串+=运算
+	 */
+	public static void verify(){
+		String a = "abc";
+		String b = "123";
+		a += b;
+		System.out.println(a);
 	}
 }

@@ -9,7 +9,7 @@ public class MD5Test {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 		//dryString();
-		md5("0093335");
+		md5("123456");
 	}
 
 	public static void md5(String str) throws NoSuchAlgorithmException {

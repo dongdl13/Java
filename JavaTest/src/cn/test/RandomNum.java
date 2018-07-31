@@ -1,9 +1,18 @@
 package cn.test;
 
+import java.util.Random;
 import java.util.Scanner;
 
-public class RadomNum {
+public class RandomNum {
 	public static void main(String[] args) {
+		//randomLuckyDraw();
+		randomTest();
+	}
+
+	/**
+	 * 随机抽奖
+	 */
+	public static void randomLuckyDraw(){
 		while(true) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("你的选择：1、抽将 2、退出");
@@ -29,5 +38,13 @@ public class RadomNum {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Random类测试
+	 */
+	public static void randomTest(){
+		Random random = new Random();
+		System.out.print(random.nextInt(99999));
 	}
 }
