@@ -6,8 +6,9 @@ import java.util.regex.Pattern;
 public class RegExTest {
 	public static void main(String[] args) {
 //		regExTest();
-		isMyPassword("1a$");
+//		isMyPassword("aa");
 //		isPassword("a1s_+*/-@#$%^!~&*_()");
+		withAndNo();
 	}
 	public static void regExTest(){
 		String idStr = "1,1,,11";
@@ -34,8 +35,8 @@ public class RegExTest {
 	 * @param password
 	 */
 	public static void isMyPassword(String password){
-//		Pattern pattern = Pattern.compile(".*(?=\\d)(?=[a-zA-Z]).*");
-		Pattern pattern = Pattern.compile("(?!^[a-zA-Z]+$)(?!^\\d+$)(?=^[0-9a-zA-Z]+$).{6,18}");
+		Pattern pattern = Pattern.compile("(?!^[a-zA-Z]+$)(?!^\\d+$)^[0-9a-zA-Z]{6,18}$");
+		//^(?!\\d+$)(?![a-zA-Z]+$)[0-9a-zA-Z]{6,18}$
 		Matcher matcher = pattern.matcher(password);
 		System.out.println(matcher.matches());
 	}
@@ -51,5 +52,18 @@ public class RegExTest {
 		Matcher matcher = pattern.matcher(str);
 		Boolean b= matcher.matches();
 		System.out.println(b);
+	}
+
+	/**
+	 * "" 和  "^$" 匹配区别
+	 */
+	public static void withAndNo() {
+		String str = "a999132123";
+		Pattern pattern1 = Pattern.compile("\\d+");
+		Pattern pattern2 = Pattern.compile("^\\d+");
+		//Matcher.find()  匹配子串
+		System.out.println(pattern1.matcher(str).find());
+		//Matcher.matches()  匹配全字符串
+		System.out.println(pattern2.matcher(str).matches());
 	}
 }
