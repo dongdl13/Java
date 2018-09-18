@@ -18,9 +18,13 @@ public class MD5Util {
 			this.value = value;
 		}
 	}
-	
+
+	private static char hexDigitsChar[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+			'a', 'b', 'c', 'd', 'e', 'f' };
 	private static final String hexDigits[] = { "0", "1", "2", "3", "4", "5",
 		"6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
+	private static final String hexDigitsChEn[] = { "啊", "哦", "饿", "一", "波", "破",
+			"么", "风", "得", "特", "呢", "了", "个", "可", "和", "级" };
 	private static final String hexDigitsStr = "0123456789abcdef";
 	private static String byteArrayToHexString(byte b[]) {
 		StringBuffer resultSb = new StringBuffer();
@@ -36,8 +40,10 @@ public class MD5Util {
 			n += 256;
 		int d1 = n / 16;
 		int d2 = n % 16;
-		//return hexDigits[d1] + hexDigits[d2];
-		return hexDigitsStr.toCharArray()[d1] + "" + hexDigitsStr.toCharArray()[d2];
+//		return hexDigits[d1] + hexDigits[d2];
+		return hexDigitsChar[d1] + "" + hexDigitsChar[d2];
+//		return hexDigitsChEn[d1] + hexDigitsChEn[d2];
+//		return hexDigitsStr.toCharArray()[d1] + "" + hexDigitsStr.toCharArray()[d2];
 	}
 
 	public static String MD5Encode(String origin, String charsetname) {
@@ -91,8 +97,6 @@ public class MD5Util {
     }
 
 	public static String getMD5(byte[] source) throws NoSuchAlgorithmException {
-		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-				'a', 'b', 'c', 'd', 'e', 'f' };
 		MessageDigest digest = MessageDigest.getInstance("MD5");
 		digest.update(source);
 		byte tmp[] = digest.digest();
@@ -100,8 +104,8 @@ public class MD5Util {
 		int k = 0;
 		for (int i = 0; i < 16; i++) {
 			byte byte0 = tmp[i];
-			dest[k++] = hexDigits[byte0 >>> 4 & 0xf];
-			dest[k++] = hexDigits[byte0 & 0xf];
+			dest[k++] = hexDigitsChar[byte0 >>> 4 & 0xf];
+			dest[k++] = hexDigitsChar[byte0 & 0xf];
 		}
 		return new String(dest);
 	}

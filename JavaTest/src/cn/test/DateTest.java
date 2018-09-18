@@ -14,24 +14,29 @@ import java.util.TimeZone;
  * @description 时间相关
  */
 public class DateTest {
+	public static final String DATEFORMAT_OF_DATE = "yyyy-MM-dd";
+	public static final String DATEFORMAT_OF_TIME = "yyyy-MM-dd HH:mm:ss";
+	public static final String DATEFORMAT_OF_MILLIS = "yyyy-MM-dd HH:mm:ss";
+
 	public static void main(String[] args) throws ParseException {
 //		getFormatTime();
 //		getFormatDate();
 //		getMillisOfSub();
 //		getYearOfSub();
 //		getUtcTime();
-		getTimeMills();
+//		getTimeMills();
+		getTimeStr(1534386200000L);
 	}
 
 	//当前时间 转换成yyyy-MM-dd => 字符串
 	public static void getFormatTime() {
 		Date date = Calendar.getInstance().getTime();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATEFORMAT_OF_DATE);
 		String time = simpleDateFormat.format(date);
 		System.out.println("time:" + time);
 	}
 
-	//前时间 转换成yyyy-MM-dd => Date
+	//当前时间 转换成yyyy-MM-dd => Date
 	public static void getFormatDate() {
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.HOUR_OF_DAY, 0);
@@ -47,7 +52,7 @@ public class DateTest {
 		SimpleDateFormat s1 = null;
 		Long currentMills = System.currentTimeMillis();
 		//创建某个时间
-		s1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		s1 = new SimpleDateFormat(DATEFORMAT_OF_TIME);
 		Date date1 = s1.parse("2018-05-17 10:28:00");
 		Timestamp timestamp = new Timestamp(date1.getTime());
 		Long sTime = timestamp.getTime();
@@ -90,7 +95,7 @@ public class DateTest {
 		TimeZone timeZoneUTC = TimeZone.getTimeZone("UTC");
 		Calendar c = Calendar.getInstance(timeZone);
 		Date date = c.getTime();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS ");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATEFORMAT_OF_MILLIS + " ");
 		simpleDateFormat.setTimeZone(timeZone);
 		String str = simpleDateFormat.format(date);
 		System.out.println("系统时间:" + date);
@@ -113,5 +118,13 @@ public class DateTest {
 	public static void getTimeMills(){
 		Date nowDate = new Date();
 		System.out.println(nowDate.getTime());
+	}
+
+	/**
+	 * 转换时间戳 为 时间字符串
+	 * @param time
+	 */
+	public static void getTimeStr(Long time){
+		System.out.println(new SimpleDateFormat(DATEFORMAT_OF_TIME).format(time));
 	}
 }

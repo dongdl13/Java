@@ -11,7 +11,10 @@ public class StringTest {
 
 //		System.out.println(Demo.class.getSimpleName());
 //		compareString();
-		verify();
+//		verify();
+//		str2bit("8"); // 0-9 => 48-57
+		Integer result = (Integer) null;
+		System.out.println(result == 5);
 	}
 
 	public static void other(){
@@ -54,5 +57,18 @@ public class StringTest {
 		String b = "123";
 		a += b;
 		System.out.println(a);
+	}
+
+	/**
+	 * 字符串 to 二进制
+	 * @param str
+	 */
+	public static void str2bit(String str){
+		char[] chars = str.toCharArray();
+		String result = "";
+		for(char c:chars){
+			result += Integer.toBinaryString(c);
+		}
+		System.out.println(result);
 	}
 }

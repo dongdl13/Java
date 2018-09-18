@@ -8,7 +8,11 @@ public class RegExTest {
 //		regExTest();
 //		isMyPassword("aa");
 //		isPassword("a1s_+*/-@#$%^!~&*_()");
-		withAndNo();
+//		withAndNo();
+//		test1();
+		Pattern pattern = Pattern.compile("^\\d$");
+		Matcher matcher = pattern.matcher("1.5");
+		System.out.println(!matcher.matches());
 	}
 	public static void regExTest(){
 		String idStr = "1,1,,11";
@@ -65,5 +69,15 @@ public class RegExTest {
 		System.out.println(pattern1.matcher(str).find());
 		//Matcher.matches()  匹配全字符串
 		System.out.println(pattern2.matcher(str).matches());
+	}
+
+	/**
+	 * [^] [^a] -> 匹配到非a
+	 */
+	public static void test1(){
+		String regEx = "[^\\d]{1,2}";
+		System.out.println(Pattern.matches(regEx, "00"));
+		System.out.println(Pattern.matches(regEx, "a0"));
+		System.out.println(Pattern.matches(regEx, "aa"));
 	}
 }

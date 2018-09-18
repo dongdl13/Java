@@ -40,6 +40,10 @@ public class Demo {
     public Demo() {
     }
 
+    public Demo(String name) {
+        this.name = name;
+    }
+
     public Demo(Integer id, String name, Date createDate) {
         this.id = id;
         this.name = name;
